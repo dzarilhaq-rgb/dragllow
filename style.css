@@ -1,0 +1,137 @@
+:root{
+  --pink:#b92f62;
+  --pink-dark:#8f234b;
+  --green:#526f39;
+  --green-dark:#354b22;
+  --lime:#b7c930;
+  --cream:#fff8dc;
+  --paper:#fbf6e8;
+  --ink:#202118;
+  --muted:#68685d;
+  --white:#fffdf5;
+  --line:rgba(32,33,24,.15);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.topbar{height:34px;background:var(--green-dark);color:#edf0cc;display:flex;justify-content:space-between;align-items:center;padding:0 5vw;font-size:10px;letter-spacing:1.6px;font-weight:700}
+.navbar{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:var(--paper);position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line)}
+.brand,.footer-brand{font-family:"Playfair Display",serif;font-weight:800;font-size:30px;letter-spacing:-1.5px;color:var(--pink)}
+.brand span,.footer-brand span{color:var(--green)}
+.navbar nav{display:flex;gap:36px;font-size:12px;text-transform:uppercase;letter-spacing:1.3px;font-weight:700}
+.navbar nav a:hover,.text-link:hover{color:var(--pink)}
+.nav-order{background:var(--lime);padding:13px 18px;font-size:11px;font-weight:800;letter-spacing:1px}
+.nav-order span,.btn span{margin-left:14px}
+.hero{min-height:calc(100vh - 110px);display:grid;grid-template-columns:48% 52%;overflow:hidden;background:var(--cream)}
+.hero-copy{padding:8vw 5vw 6vw 9vw;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.eyebrow,.section-tag,.product-kicker{font-size:11px;font-weight:800;letter-spacing:2.3px;color:var(--green);margin:0 0 20px}
+.hero h1,.section h2,.product-copy h2,.how-copy h2,.cta h2{font-family:"Playfair Display",serif;font-size:clamp(55px,6.2vw,96px);line-height:.9;letter-spacing:-4px;margin:0 0 28px}
+.hero h1 em,.section h2 span,.product-copy h2 em,.how-copy h2 span,.cta h2 em{color:var(--pink);font-style:normal}
+.hero-text{max-width:540px;color:#55554b;line-height:1.75;font-size:16px}
+.hero-actions{display:flex;align-items:center;gap:28px;margin:30px 0 36px}
+.btn{border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:17px 22px;font-weight:800;font-size:11px;letter-spacing:1.2px;transition:.2s transform,.2s box-shadow}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(0,0,0,.12)}
+.btn-dark{background:var(--ink);color:white}
+.btn-light{background:var(--white);color:var(--ink)}
+.text-link{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--ink);padding-bottom:5px}
+.hero-notes{display:flex;gap:20px;color:var(--green);font-size:9px;font-weight:800;letter-spacing:1.2px}
+.hero-art{position:relative;min-height:680px;background:var(--pink);overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(0);opacity:.8}
+.blob-one{width:500px;height:500px;background:#c83b70;right:-90px;top:-110px}
+.blob-two{width:430px;height:430px;background:#9e2755;left:-130px;bottom:-150px}
+.fruit-ring{position:absolute;width:520px;height:520px;border:1px solid rgba(255,255,255,.35);border-radius:50%;right:8%;top:12%}
+.hero-product{position:absolute;width:min(58%,520px);max-height:70%;object-fit:contain;right:12%;top:15%;filter:drop-shadow(0 28px 25px rgba(50,0,20,.22));transform:rotate(-4deg)}
+.floating-card{position:absolute;left:9%;bottom:14%;background:var(--cream);padding:20px 24px;min-width:190px;box-shadow:10px 10px 0 rgba(48,67,28,.35)}
+.floating-card span,.floating-card small{display:block;font-size:9px;letter-spacing:1.5px;color:var(--green);font-weight:800}
+.floating-card strong{display:block;font-family:"Playfair Display",serif;font-size:23px;margin:4px 0}
+.decor-slice{position:absolute;width:145px;right:2%;bottom:-25px;transform:rotate(16deg);opacity:.9}
+.marquee{height:62px;background:var(--lime);display:flex;align-items:center;justify-content:center;gap:26px;overflow:hidden;color:var(--green-dark);font-size:12px;font-weight:900;letter-spacing:2px;white-space:nowrap}
+.section{padding:110px 9vw}
+.intro{background:var(--paper)}
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:8vw}
+.section h2{font-size:64px;letter-spacing:-3px}
+.lead{font-size:20px;line-height:1.65;color:var(--green-dark)}
+.intro-grid p:not(.lead){font-size:14px;line-height:1.9;color:var(--muted);max-width:600px}
+.visual-break{height:620px;position:relative;overflow:hidden;background:var(--green-dark)}
+.visual-break>img{width:100%;height:100%;object-fit:cover;opacity:.75}
+.visual-overlay{position:absolute;left:9vw;top:50%;transform:translateY(-50%);color:white}
+.visual-overlay p{font-size:11px;letter-spacing:3px;font-weight:800}
+.visual-overlay h2{font-family:"Playfair Display",serif;font-size:90px;line-height:.84;letter-spacing:-5px;margin:12px 0}
+.visual-overlay span{font-size:13px}
+.sticker{position:absolute;right:10%;top:15%;width:125px;height:125px;border-radius:50%;background:var(--lime);display:grid;place-content:center;text-align:center;font-size:10px;font-weight:900;letter-spacing:1px;transform:rotate(11deg);color:var(--green-dark)}
+.sticker b{font-size:24px}
+.benefits{background:var(--cream)}
+.section-heading{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:50px}
+.section-heading p{max-width:390px;font-size:13px;line-height:1.7;color:var(--muted)}
+.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.benefit-card{padding:35px;background:var(--white);min-height:260px;border:1px solid var(--line);position:relative}
+.benefit-card.accent{background:var(--pink);color:white;border-color:transparent}
+.number{font-size:10px;font-weight:900;letter-spacing:2px;color:var(--pink);margin-bottom:60px}
+.accent .number{color:#f4f6bf}
+.benefit-card h3{font-family:"Playfair Display",serif;font-size:28px;margin:0 0 12px}
+.benefit-card p{font-size:13px;line-height:1.75;color:var(--muted)}
+.accent p{color:#f9e7ee}
+.product-section{display:grid;grid-template-columns:55% 45%;min-height:730px;background:var(--green);color:white}
+.product-image-wrap{padding:70px 5vw 70px 9vw;position:relative}
+.image-frame{height:100%;min-height:590px;overflow:hidden;position:relative;background:var(--pink)}
+.image-frame img{width:100%;height:100%;object-fit:cover}
+.image-caption{position:absolute;bottom:50px;left:12vw;background:var(--cream);color:var(--ink);padding:13px 18px;font-size:9px;font-weight:900;letter-spacing:1.8px}
+.product-copy{padding:95px 9vw 80px 5vw;display:flex;flex-direction:column;justify-content:center}
+.product-copy .section-tag{color:#dfe7aa}
+.product-kicker{color:#dfe7aa}
+.product-copy h2{font-size:69px}
+.product-description{color:#e4e8d9;line-height:1.8;max-width:500px;font-size:14px}
+.ingredient-pills{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0}
+.ingredient-pills span{border:1px solid rgba(255,255,255,.3);padding:9px 12px;font-size:10px}
+.buy-box{display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.25);border-bottom:1px solid rgba(255,255,255,.25);padding:20px 0;margin-top:15px;gap:20px}
+.buy-box small{display:block;color:#cfd9a2;font-size:9px;letter-spacing:1.4px}
+.buy-box strong{display:block;font-family:"Playfair Display",serif;font-size:29px;margin-top:4px}
+.order-note{font-size:10px;color:#cdd5c1;line-height:1.6;margin-bottom:0}
+.ingredients{background:var(--paper)}
+.ingredient-layout{display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:center}
+.ingredient-copy h2{font-size:70px}
+.ingredient-copy>p{font-size:14px;color:var(--muted);line-height:1.8;max-width:520px}
+.ingredient-list{margin-top:35px}
+.ingredient-list>div{display:grid;grid-template-columns:45px 1fr 1fr;padding:18px 0;border-bottom:1px solid var(--line);align-items:center}
+.ingredient-list b{font-size:10px;color:var(--pink)}
+.ingredient-list span{font-weight:800}
+.ingredient-list small{color:var(--muted);font-size:10px}
+.ingredient-photo{height:620px;position:relative;overflow:hidden}
+.ingredient-photo img{width:100%;height:100%;object-fit:cover}
+.photo-label{position:absolute;right:20px;bottom:20px;background:var(--lime);padding:15px;font-weight:900;font-size:10px;line-height:1.2;letter-spacing:1px}
+.how-section{display:grid;grid-template-columns:1fr 1fr;background:var(--cream)}
+.how-image{height:650px;overflow:hidden}
+.how-image img{width:100%;height:100%;object-fit:cover}
+.how-copy{padding:100px 10vw 80px 8vw}
+.how-copy h2{font-size:64px}
+.how-copy ol{list-style:none;margin:45px 0 0;padding:0}
+.how-copy li{display:grid;grid-template-columns:50px 1fr;gap:18px;padding:22px 0;border-bottom:1px solid var(--line);font-size:14px}
+.how-copy li b{color:var(--pink);font-size:10px;letter-spacing:1px}
+.cta{height:560px;position:relative;overflow:hidden;background:var(--pink-dark);display:grid;place-items:center;text-align:center;color:white}
+.cta-bg{position:absolute;width:100%;height:100%;object-fit:cover;opacity:.22;filter:saturate(1.1)}
+.cta-content{position:relative;z-index:2}
+.cta-content p{font-size:10px;letter-spacing:3px;font-weight:800}
+.cta h2{font-size:78px;margin:20px 0 35px}
+footer{background:var(--ink);color:#d9dacd;padding:50px 9vw 35px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:start;gap:30px}
+.footer-brand{color:#ef6b9b;font-size:32px}
+.footer-brand span{color:#b9cf39}
+footer p{font-size:11px;color:#aeb0a3}
+.footer-links{display:flex;gap:22px;font-size:10px;text-transform:uppercase;letter-spacing:1px;font-weight:800;justify-content:center}
+.footer-links a:hover{color:#b9cf39}
+footer small{grid-column:1/-1;border-top:1px solid #3b3c35;padding-top:20px;color:#7f8177;font-size:9px}
+@media(max-width:900px){
+  .navbar nav{display:none}
+  .hero{grid-template-columns:1fr}
+  .hero-copy{padding:70px 8vw}
+  .hero-art{min-height:550px}
+  .intro-grid,.ingredient-layout,.how-section,.product-section{grid-template-columns:1fr}
+  .benefit-grid{grid-template-columns:1fr}
+  .product-image-wrap{padding:50px 8vw}
+  .product-copy{padding:70px 8vw}
+  .ingredient-photo{height:480px}
+  .how-copy{padding:70px 8vw}
+  footer{grid-template-columns:1fr}
+  .footer-links{justify-content:flex-start}
+}
