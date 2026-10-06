@@ -21,9 +21,9 @@
 }
 
 
-/* =========================================
+/* =========================================================
    RESET
-========================================= */
+========================================================= */
 
 * {
   box-sizing: border-box;
@@ -31,6 +31,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -38,6 +39,11 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
 }
 
 a {
@@ -50,9 +56,9 @@ button {
 }
 
 
-/* =========================================
+/* =========================================================
    TOP BAR
-========================================= */
+========================================================= */
 
 .topbar {
   height: 34px;
@@ -72,12 +78,12 @@ button {
 }
 
 
-/* =========================================
+/* =========================================================
    NAVBAR
-========================================= */
+========================================================= */
 
 .navbar {
-  height: 76px;
+  min-height: 76px;
 
   display: flex;
   align-items: center;
@@ -90,7 +96,7 @@ button {
   position: sticky;
   top: 0;
 
-  z-index: 20;
+  z-index: 50;
 
   border-bottom: 1px solid var(--line);
 }
@@ -100,11 +106,14 @@ button {
   font-family: "Playfair Display", serif;
 
   font-weight: 800;
+
   font-size: 30px;
 
   letter-spacing: -1.5px;
 
   color: var(--pink);
+
+  flex-shrink: 0;
 }
 
 .brand span,
@@ -112,8 +121,13 @@ button {
   color: var(--green);
 }
 
+
+/* NAVIGATION DESKTOP */
+
 .navbar nav {
   display: flex;
+
+  align-items: center;
 
   gap: 36px;
 
@@ -127,12 +141,54 @@ button {
 }
 
 .navbar nav a {
-  transition: color 0.25s ease;
+  position: relative;
+
+  white-space: nowrap;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.navbar nav a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -7px;
+
+  width: 0;
+  height: 2px;
+
+  background: var(--pink);
+
+  transition: width 0.25s ease;
 }
 
 .navbar nav a:hover {
   color: var(--pink);
+
+  transform: translateY(-1px);
 }
+
+.navbar nav a:hover::after {
+  width: 100%;
+}
+
+
+/* ACTIVE NAV */
+
+.navbar nav a.nav-active {
+  color: var(--pink);
+}
+
+.navbar nav a.nav-active::after {
+  width: 100%;
+}
+
+
+/* SHOP NOW */
 
 .nav-order {
   background: var(--lime);
@@ -145,6 +201,8 @@ button {
 
   letter-spacing: 1px;
 
+  white-space: nowrap;
+
   transition:
     transform 0.25s ease,
     background 0.25s ease;
@@ -152,6 +210,7 @@ button {
 
 .nav-order:hover {
   transform: translateY(-2px);
+
   background: var(--lime-light);
 }
 
@@ -161,9 +220,9 @@ button {
 }
 
 
-/* =========================================
+/* =========================================================
    HERO
-========================================= */
+========================================================= */
 
 .hero {
   min-height: calc(100vh - 110px);
@@ -252,9 +311,9 @@ button {
 }
 
 
-/* =========================================
+/* =========================================================
    BUTTON
-========================================= */
+========================================================= */
 
 .btn {
   border: 0;
@@ -312,7 +371,9 @@ button {
 
   padding-bottom: 5px;
 
-  transition: color 0.25s ease;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .text-link:hover {
@@ -322,9 +383,9 @@ button {
 }
 
 
-/* =========================================
+/* =========================================================
    HERO NOTES
-========================================= */
+========================================================= */
 
 .hero-notes {
   display: flex;
@@ -338,12 +399,14 @@ button {
   font-weight: 800;
 
   letter-spacing: 1.2px;
+
+  flex-wrap: wrap;
 }
 
 
-/* =========================================
+/* =========================================================
    HERO ART
-========================================= */
+========================================================= */
 
 .hero-art {
   position: relative;
@@ -353,6 +416,8 @@ button {
   background: var(--pink);
 
   overflow: hidden;
+
+  isolation: isolate;
 }
 
 .blob {
@@ -361,6 +426,8 @@ button {
   border-radius: 50%;
 
   opacity: 0.8;
+
+  pointer-events: none;
 }
 
 .blob-one {
@@ -395,6 +462,8 @@ button {
 
   right: 8%;
   top: 12%;
+
+  pointer-events: none;
 }
 
 .hero-product {
@@ -415,6 +484,8 @@ button {
     );
 
   transform: rotate(-4deg);
+
+  z-index: 3;
 }
 
 .floating-card {
@@ -431,6 +502,8 @@ button {
 
   box-shadow:
     10px 10px 0 rgba(48, 67, 28, 0.35);
+
+  z-index: 5;
 }
 
 .floating-card span,
@@ -457,9 +530,9 @@ button {
 }
 
 
-/* =========================================
+/* =========================================================
    MARQUEE
-========================================= */
+========================================================= */
 
 .marquee {
   height: 62px;
@@ -485,21 +558,28 @@ button {
   letter-spacing: 2px;
 
   white-space: nowrap;
+
+  width: 100%;
+}
+
+.marquee > div,
+.marquee > span {
+  flex-shrink: 0;
 }
 
 
-/* =========================================
+/* =========================================================
    GENERAL SECTION
-========================================= */
+========================================================= */
 
 .section {
   padding: 110px 9vw;
 }
 
 
-/* =========================================
+/* =========================================================
    ABOUT
-========================================= */
+========================================================= */
 
 .intro {
   background: var(--paper);
@@ -538,9 +618,9 @@ button {
 }
 
 
-/* =========================================
+/* =========================================================
    VISUAL BREAK
-========================================= */
+========================================================= */
 
 .visual-break {
   height: 620px;
@@ -632,9 +712,9 @@ button {
 }
 
 
-/* =========================================
+/* =========================================================
    BENEFITS
-========================================= */
+========================================================= */
 
 .benefits {
   background: var(--cream);
@@ -725,9 +805,9 @@ button {
 }
 
 
-/* =========================================
+/* =========================================================
    PRODUCT
-========================================= */
+========================================================= */
 
 .product-section {
   display: grid;
@@ -885,9 +965,9 @@ button {
 }
 
 
-/* =========================================
+/* =========================================================
    INGREDIENTS
-========================================= */
+========================================================= */
 
 .ingredients {
   background: var(--paper);
@@ -984,9 +1064,9 @@ button {
 }
 
 
-/* =========================================
+/* =========================================================
    HOW TO USE
-========================================= */
+========================================================= */
 
 .how-section {
   display: grid;
@@ -1049,8 +1129,7 @@ button {
 
 
 /* =========================================================
-   FAQ SECTION
-   DRAGLOW PREMIUM FAQ
+   FAQ
 ========================================================= */
 
 .faq-section {
@@ -1068,9 +1147,7 @@ button {
 }
 
 
-/* =========================================
-   FAQ BACKGROUND
-========================================= */
+/* FAQ BACKGROUND */
 
 .faq-bg {
   position: absolute;
@@ -1094,9 +1171,7 @@ button {
 }
 
 
-/* =========================================
-   FAQ COLOR OVERLAY
-========================================= */
+/* FAQ OVERLAY */
 
 .faq-overlay {
   position: absolute;
@@ -1115,9 +1190,7 @@ button {
 }
 
 
-/* =========================================
-   FAQ DECORATIVE LIGHT
-========================================= */
+/* FAQ DECORATION */
 
 .faq-section::before {
   content: "";
@@ -1162,9 +1235,7 @@ button {
 }
 
 
-/* =========================================
-   FAQ CONTENT
-========================================= */
+/* FAQ CONTENT */
 
 .faq-content {
   position: relative;
@@ -1177,9 +1248,7 @@ button {
 }
 
 
-/* =========================================
-   FAQ INTRO
-========================================= */
+/* FAQ INTRO */
 
 .faq-intro {
   max-width: 700px;
@@ -1222,9 +1291,7 @@ button {
 }
 
 
-/* =========================================
-   FAQ LIST
-========================================= */
+/* FAQ LIST */
 
 .faq-list {
   display: flex;
@@ -1235,9 +1302,7 @@ button {
 }
 
 
-/* =========================================
-   FAQ CARD
-========================================= */
+/* FAQ CARD */
 
 .faq-card {
   position: relative;
@@ -1264,11 +1329,6 @@ button {
     border-color 0.35s ease;
 }
 
-
-/* =========================================
-   FAQ NUMBER
-========================================= */
-
 .faq-number {
   font-size: 11px;
 
@@ -1282,11 +1342,6 @@ button {
     transform 0.35s ease,
     color 0.35s ease;
 }
-
-
-/* =========================================
-   FAQ QUESTION TEXT
-========================================= */
 
 .faq-question {
   display: flex;
@@ -1318,11 +1373,6 @@ button {
   transition: color 0.3s ease;
 }
 
-
-/* =========================================
-   FAQ ARROW
-========================================= */
-
 .faq-arrow {
   width: 40px;
 
@@ -1350,9 +1400,7 @@ button {
 }
 
 
-/* =========================================
-   FAQ HOVER
-========================================= */
+/* FAQ HOVER */
 
 .faq-card:hover {
   padding-left: 36px;
@@ -1387,9 +1435,7 @@ button {
 }
 
 
-/* =========================================
-   FAQ BOTTOM
-========================================= */
+/* FAQ BOTTOM */
 
 .faq-bottom {
   display: flex;
@@ -1418,9 +1464,9 @@ button {
 }
 
 
-/* =========================================
+/* =========================================================
    CTA
-========================================= */
+========================================================= */
 
 .cta {
   height: 560px;
@@ -1474,9 +1520,9 @@ button {
 }
 
 
-/* =========================================
+/* =========================================================
    FOOTER
-========================================= */
+========================================================= */
 
 footer {
   background: var(--ink);
@@ -1553,8 +1599,22 @@ footer small {
 
 @media (max-width: 1100px) {
 
+  .navbar {
+    padding: 0 4vw;
+  }
+
   .navbar nav {
     gap: 20px;
+  }
+
+  .navbar nav a {
+    font-size: 10px;
+  }
+
+  .nav-order {
+    padding: 11px 13px;
+
+    font-size: 9px;
   }
 
   .hero-copy {
@@ -1563,22 +1623,73 @@ footer small {
 
   .faq-section {
     padding-left: 7vw;
+
     padding-right: 7vw;
   }
-
 }
 
 
 /* =========================================================
-   TABLET / MOBILE
+   TABLET / SMALL LAPTOP
 ========================================================= */
 
 @media (max-width: 900px) {
 
-  /* NAVBAR */
+  /*
+    PENTING:
+    Sebelumnya navbar mobile menggunakan:
+    .navbar nav { display:none; }
+
+    Sekarang TIDAK disembunyikan.
+    Menu tetap terlihat dan bisa digunakan.
+  */
+
+  .navbar {
+    min-height: 72px;
+
+    padding: 0 24px;
+
+    gap: 12px;
+  }
 
   .navbar nav {
+    display: flex;
+
+    gap: 20px;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 8px 2px;
+
+    scrollbar-width: none;
+
+    -ms-overflow-style: none;
+  }
+
+  .navbar nav::-webkit-scrollbar {
     display: none;
+  }
+
+  .navbar nav a {
+    flex-shrink: 0;
+
+    font-size: 10px;
+
+    letter-spacing: 1.1px;
+  }
+
+  .nav-order {
+    flex-shrink: 0;
+
+    padding: 11px 13px;
+
+    font-size: 9px;
   }
 
 
@@ -1586,14 +1697,18 @@ footer small {
 
   .hero {
     grid-template-columns: 1fr;
+
+    min-height: auto;
   }
 
   .hero-copy {
-    padding: 70px 8vw;
+    padding: 70px 8vw 60px;
   }
 
   .hero-art {
-    min-height: 550px;
+    min-height: 580px;
+
+    height: 580px;
   }
 
 
@@ -1643,6 +1758,10 @@ footer small {
     grid-template-columns: 1fr;
   }
 
+  .how-image {
+    height: 500px;
+  }
+
   .how-copy {
     padding: 70px 8vw;
   }
@@ -1657,7 +1776,6 @@ footer small {
   .footer-links {
     justify-content: flex-start;
   }
-
 }
 
 
@@ -1667,12 +1785,14 @@ footer small {
 
 @media (max-width: 600px) {
 
-  /* TOP BAR */
+  /* =====================================================
+     TOP BAR
+  ===================================================== */
 
   .topbar {
     height: 30px;
 
-    padding: 0 20px;
+    padding: 0 16px;
 
     font-size: 7px;
 
@@ -1684,106 +1804,310 @@ footer small {
   }
 
 
-  /* NAVBAR */
+  /* =====================================================
+     MOBILE NAVBAR
+  ===================================================== */
 
   .navbar {
-    height: 68px;
+    min-height: 112px;
 
-    padding: 0 20px;
+    height: auto;
+
+    padding: 14px 16px 10px;
+
+    display: grid;
+
+    grid-template-columns: 1fr auto;
+
+    grid-template-rows: auto auto;
+
+    column-gap: 12px;
+
+    row-gap: 8px;
+
+    align-items: center;
   }
+
+
+  /*
+    Logo tetap berada di baris pertama
+  */
 
   .brand {
     font-size: 27px;
+
+    grid-column: 1;
+    grid-row: 1;
   }
+
+
+  /*
+    Shop Now tetap berada di kanan
+  */
 
   .nav-order {
-    padding: 11px 13px;
+    grid-column: 2;
+    grid-row: 1;
 
-    font-size: 9px;
+    padding: 10px 12px;
+
+    font-size: 8px;
+  }
+
+  .nav-order span {
+    margin-left: 7px;
   }
 
 
-  /* HERO */
+  /*
+    MENU NAVIGASI SEKARANG TETAP MUNCUL
+    DI MOBILE
+  */
+
+  .navbar nav {
+    grid-column: 1 / -1;
+
+    grid-row: 2;
+
+    width: 100%;
+
+    display: flex;
+
+    gap: 22px;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    padding: 5px 2px 8px;
+
+    scrollbar-width: none;
+
+    -ms-overflow-style: none;
+
+    border-top: 1px solid rgba(32, 33, 24, 0.08);
+  }
+
+  .navbar nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navbar nav a {
+    flex: 0 0 auto;
+
+    font-size: 9px;
+
+    letter-spacing: 1.1px;
+
+    padding-top: 5px;
+  }
+
+
+  /* =====================================================
+     HERO MOBILE
+  ===================================================== */
+
+  .hero {
+    display: block;
+
+    min-height: auto;
+
+    width: 100%;
+
+    overflow: hidden;
+  }
+
+
+  /*
+    Bagian teks dibuat sepenuhnya terlihat.
+  */
 
   .hero-copy {
+    width: 100%;
+
     padding: 65px 20px 55px;
+
+    display: flex;
+
+    justify-content: center;
   }
 
   .eyebrow {
     font-size: 8px;
 
     letter-spacing: 1.8px;
+
+    margin-bottom: 18px;
   }
 
   .hero h1 {
     font-size: 51px;
 
+    line-height: 0.92;
+
     letter-spacing: -2.5px;
+
+    margin-bottom: 25px;
   }
 
   .hero-text {
+    width: 100%;
+
+    max-width: 100%;
+
     font-size: 13px;
 
     line-height: 1.7;
   }
 
+
+  /*
+    Tombol tetap terlihat di mobile.
+  */
+
   .hero-actions {
-    align-items: flex-start;
+    display: flex;
 
     flex-direction: column;
+
+    align-items: flex-start;
 
     gap: 20px;
 
     margin: 25px 0 30px;
   }
 
+  .hero-actions .btn {
+    max-width: 100%;
+  }
+
+
+  /*
+    INTERAKSI / CATATAN HERO
+    TETAP DITAMPILKAN DI MOBILE
+  */
+
   .hero-notes {
+    display: flex;
+
     flex-wrap: wrap;
 
-    gap: 10px;
+    gap: 9px 14px;
 
     font-size: 7px;
+
+    line-height: 1.5;
   }
+
+
+  /* =====================================================
+     HERO ART MOBILE
+  ===================================================== */
 
   .hero-art {
-    min-height: 470px;
+    width: 100%;
+
+    min-height: 540px;
+
+    height: 540px;
+
+    overflow: hidden;
+
+    position: relative;
   }
 
-  .hero-product {
-    width: 75%;
 
-    right: 10%;
-
-    top: 12%;
-  }
+  /*
+    Lingkaran dekorasi diperkecil agar
+    tidak keluar dari layar.
+  */
 
   .fruit-ring {
-    width: 350px;
-    height: 350px;
+    width: 360px;
 
-    right: -5%;
+    height: 360px;
 
-    top: 15%;
+    right: 50%;
+
+    transform: translateX(50%);
+
+    top: 65px;
   }
 
+
+  /*
+    Blob disesuaikan dengan layar.
+  */
+
   .blob-one {
-    width: 350px;
-    height: 350px;
+    width: 360px;
+
+    height: 360px;
+
+    right: -150px;
+
+    top: -100px;
   }
 
   .blob-two {
     width: 300px;
+
     height: 300px;
+
+    left: -160px;
+
+    bottom: -140px;
   }
 
+
+  /*
+    GAMBAR PRODUK:
+    Tidak lagi terlalu besar sehingga
+    terpotong di mobile.
+  */
+
+  .hero-product {
+    width: 78%;
+
+    max-width: 360px;
+
+    max-height: 330px;
+
+    height: auto;
+
+    right: 50%;
+
+    top: 55px;
+
+    transform:
+      translateX(50%)
+      rotate(-4deg);
+
+    object-fit: contain;
+  }
+
+
+  /*
+    Floating card tetap terlihat.
+  */
+
   .floating-card {
-    left: 20px;
+    left: 50%;
 
-    bottom: 35px;
+    bottom: 30px;
 
-    min-width: 165px;
+    transform: translateX(-50%);
+
+    min-width: 170px;
+
+    width: auto;
 
     padding: 15px 18px;
+
+    text-align: left;
+
+    box-shadow:
+      8px 8px 0 rgba(48, 67, 28, 0.35);
   }
 
   .floating-card strong {
@@ -1791,12 +2115,20 @@ footer small {
   }
 
 
-  /* MARQUEE */
+  /* =====================================================
+     MARQUEE MOBILE
+  ===================================================== */
 
   .marquee {
     height: 52px;
 
+    justify-content: flex-start;
+
     gap: 18px;
+
+    padding: 0 20px;
+
+    overflow: hidden;
 
     font-size: 9px;
 
@@ -1804,7 +2136,9 @@ footer small {
   }
 
 
-  /* SECTION */
+  /* =====================================================
+     GENERAL SECTION MOBILE
+  ===================================================== */
 
   .section {
     padding: 80px 20px;
@@ -1823,7 +2157,9 @@ footer small {
   }
 
 
-  /* ABOUT */
+  /* =====================================================
+     ABOUT MOBILE
+  ===================================================== */
 
   .lead {
     font-size: 17px;
@@ -1836,14 +2172,22 @@ footer small {
   }
 
 
-  /* VISUAL BREAK */
+  /* =====================================================
+     VISUAL BREAK MOBILE
+  ===================================================== */
 
   .visual-break {
     height: 500px;
   }
 
+  .visual-break > img {
+    object-position: center;
+  }
+
   .visual-overlay {
     left: 20px;
+
+    right: 20px;
   }
 
   .visual-overlay h2 {
@@ -1858,6 +2202,7 @@ footer small {
 
   .sticker {
     width: 95px;
+
     height: 95px;
 
     right: 20px;
@@ -1872,7 +2217,9 @@ footer small {
   }
 
 
-  /* BENEFITS */
+  /* =====================================================
+     BENEFITS MOBILE
+  ===================================================== */
 
   .section-heading {
     display: block;
@@ -1903,7 +2250,9 @@ footer small {
   }
 
 
-  /* PRODUCT */
+  /* =====================================================
+     PRODUCT MOBILE
+  ===================================================== */
 
   .product-image-wrap {
     padding: 30px 20px;
@@ -1911,6 +2260,8 @@ footer small {
 
   .image-frame {
     min-height: 400px;
+
+    height: 400px;
   }
 
   .image-caption {
@@ -1956,7 +2307,9 @@ footer small {
   }
 
 
-  /* INGREDIENTS */
+  /* =====================================================
+     INGREDIENTS MOBILE
+  ===================================================== */
 
   .ingredient-copy h2 {
     font-size: 53px;
@@ -1983,7 +2336,9 @@ footer small {
   }
 
 
-  /* HOW TO USE */
+  /* =====================================================
+     HOW TO USE MOBILE
+  ===================================================== */
 
   .how-image {
     height: 420px;
@@ -2025,8 +2380,6 @@ footer small {
   }
 
 
-  /* FAQ BACKGROUND */
-
   .faq-bg {
     inset: -30px;
 
@@ -2037,8 +2390,6 @@ footer small {
     transform: scale(1.10);
   }
 
-
-  /* FAQ INTRO */
 
   .faq-intro {
     margin-bottom: 40px;
@@ -2083,17 +2434,11 @@ footer small {
     padding-left: 12px;
   }
 
-
-  /* FAQ NUMBER */
-
   .faq-number {
     font-size: 8px;
 
     letter-spacing: 1.5px;
   }
-
-
-  /* FAQ QUESTION */
 
   .faq-question {
     gap: 5px;
@@ -2112,9 +2457,6 @@ footer small {
 
     letter-spacing: 1.5px;
   }
-
-
-  /* FAQ ARROW */
 
   .faq-arrow {
     width: 30px;
@@ -2150,7 +2492,9 @@ footer small {
   }
 
 
-  /* CTA */
+  /* =====================================================
+     CTA MOBILE
+  ===================================================== */
 
   .cta {
     height: 470px;
@@ -2173,7 +2517,9 @@ footer small {
   }
 
 
-  /* FOOTER */
+  /* =====================================================
+     FOOTER MOBILE
+  ===================================================== */
 
   footer {
     padding: 40px 20px 30px;
@@ -2206,9 +2552,59 @@ footer small {
 
 @media (max-width: 380px) {
 
+  /* NAVBAR */
+
+  .navbar {
+    padding-left: 12px;
+
+    padding-right: 12px;
+  }
+
+  .navbar nav {
+    gap: 17px;
+  }
+
+  .navbar nav a {
+    font-size: 8px;
+  }
+
+  .nav-order {
+    padding: 9px 10px;
+
+    font-size: 7px;
+  }
+
+
+  /* HERO */
+
   .hero h1 {
     font-size: 45px;
   }
+
+  .hero-art {
+    height: 500px;
+
+    min-height: 500px;
+  }
+
+  .hero-product {
+    width: 82%;
+
+    max-height: 300px;
+
+    top: 55px;
+  }
+
+  .fruit-ring {
+    width: 320px;
+
+    height: 320px;
+
+    top: 65px;
+  }
+
+
+  /* FAQ */
 
   .faq-intro h2 {
     font-size: 39px;
@@ -2224,6 +2620,7 @@ footer small {
 
   .faq-arrow {
     width: 27px;
+
     height: 27px;
 
     font-size: 11px;
