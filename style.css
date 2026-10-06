@@ -135,3 +135,70 @@ footer small{grid-column:1/-1;border-top:1px solid #3b3c35;padding-top:20px;colo
   footer{grid-template-columns:1fr}
   .footer-links{justify-content:flex-start}
 }
+/* =========================================
+   FAQ BACKGROUND
+========================================= */
+
+.faq-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-background {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(65, 20, 70, 0.78),
+      rgba(65, 20, 70, 0.82)
+    ),
+    url("assets/faq-background.png");
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  filter: blur(2px);
+
+  transform: scale(1.04);
+
+  z-index: 0;
+}
+
+.faq-content {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =========================================
+   FAQ DESKTOP
+========================================= */
+
+@media (min-width: 601px) {
+
+  .faq-background {
+    background-size: cover;
+    background-position: center center;
+  }
+
+}
+
+
+/* =========================================
+   FAQ MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .faq-background {
+    background-size: cover;
+    background-position: center center;
+
+    filter: blur(3px);
+
+    transform: scale(1.06);
+  }
+
+}
